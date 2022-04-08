@@ -171,12 +171,12 @@
 
 .panel .play {
     font-family: 'Open Sans';
-    font-size: 1.5em;
+    font-size: xx-large;
+    font-weight: bold;
     width: 360px;
     display: block;
     margin: 25px auto;
     border-radius: 5px;
-    border: 1px solid #011627;
     text-align: center;
     padding: 10px;
     background-color: #00ff88;
