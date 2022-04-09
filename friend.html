@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jogo da Velha 1x1</title>
     <link rel="stylesheet" href="/css/friend.css">
 </head>
+
 <body>
-    
-    <script src=""></script>
+    <div class="container">
+        <div class="main-options">
+            <div class="right-options">
+                <h1>Player x Player</h1>
+                <div class="panel">
+                    <div class="board x" data-board>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                        <div class="cell" data-cell></div>
+                    </div>
+                </div>
+            </div>
+            <div class="winning-message">
+                <h1>X VENCEU</h1>
+                <img src="/img/Winners-bro (2).svg" class="img" alt="">
+                <button class="btn">Jogar de novo</button>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/game.js"></script>
 </body>
+
 </html>
