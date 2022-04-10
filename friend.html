@@ -10,12 +10,24 @@
 </head>
 
 <body>
-    <div class="container-2">
+    <div class="container">
         <div class="main-options">
             <div class="right-options">
-                <h1>Player x Player</h1>
+                <h1 class="player">Player x Player</h1>
+                <div class="panel2">
+                    <div class="select-box">
+                        <header>Tic Tac Toe</header>
+                        <div class="content">
+                            <div class="title">Qual player você quer ser?</div>
+                            <div class="options">
+                                <button class="playerX">Player (X)</button>
+                                <button class="playerO">Player (O)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="panel">
-                    <div class="board x" data-board>
+                    <div class="board" data-board>
                         <div class="cell" data-cell></div>
                         <div class="cell" data-cell></div>
                         <div class="cell" data-cell></div>
@@ -26,17 +38,23 @@
                         <div class="cell" data-cell></div>
                         <div class="cell" data-cell></div>
                     </div>
+                    <div class="winning-message">
+                        <h1 data-winning-message-text>X VENCEU</h1>
+                        <img src="/img/Winners-bro (2).svg" alt="">
+                        <button class="btn" button>Jogar de novo</button>
+                    </div>
+                    <div class="tie-message">
+                        <h1 data-winning-message-text>DEU VELHA</h1>
+                        <img src="/img/Grandma-bro.svg" alt="">
+                        <button class="btn" button-tie>Jogar de novo</button>
+                    </div>
                 </div>
             </div>
-            <div class="winning-message">
-                <h1>X VENCEU</h1>
-                <img src="/img/Winners-bro (2).svg" class="img" alt="">
-                <button class="btn">Jogar de novo</button>
-            </div>
         </div>
+        <canvas id="my-canvas"></canvas>
     </div>
     
+    <script src="/JS/index.min.js"></script>
     <script src="/JS/game.js" type="module"></script>
 </body>
-
 </html>

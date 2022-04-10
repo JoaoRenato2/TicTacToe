@@ -89,6 +89,7 @@
 .computer {
     position: relative;
     left: 35px;
+    
 }
 
 .friend {
@@ -115,17 +116,9 @@
     box-shadow: 1px 1px 15px 1px #00ff88;
 }
 
-.panel .x,
-.o {
-    top: 40px;
-    -webkit-box-shadow: 1px 1px 15px 1px #000000;
-    box-shadow: 1px 1px 15px 1px #000000;
-    
-}
-
 .panel .computer,
 .friend {
-    top: 5px;
+    top: 25px;
     -webkit-box-shadow: 1px 1px 15px 1px #000000;
     box-shadow: 1px 1px 15px 1px #000000;
     

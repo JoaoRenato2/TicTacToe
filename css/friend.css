@@ -8,7 +8,7 @@
 
 
 
-.container-2 {
+.container {
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -17,8 +17,9 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     background-color: #00ff88;
-
 }
+
+
 
 .main-options {
     background-color: #000;
@@ -44,7 +45,108 @@
     grid-row-gap: 0px;
 }
 
+.panel2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+}
+
+.select-box {
+    position: relative;
+    left: 550px;
+    top: 150px;
+    background: #2f2841;
+    padding: 20px 25px 25px;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    font-family:'Open Sans' ;
+}
+
+.panel2.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.select-box header {
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.select-box .title {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.select-box .options {
+    display: flex;
+    width: 100%;
+}
+
+.select-box header {
+    color: #00ff88;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.select-box .title {
+    
+    color: #0fc06d;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.select-box .options {
+    display: flex;
+    width: 100%;
+}
+
+.options button {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+    border: none;
+    background: #00ff88;
+    border-radius: 5px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+}
+
+.options button:hover,
+.btn button:hover {
+    transform: scale(0.96);
+}
+
+.options button.playerX {
+    margin-right: 5px;
+}
+
+.options button.playerO {
+    margin-left: 5px;
+}
+
 .panel {
+    display: none;
+
+}
+
+.panel.show {
     grid-area: 2 / 2 / 4 / 4;
     background-color: #2f2841;
     border-radius: 20px;
@@ -52,10 +154,13 @@
     right: 450px;
     top: 20px;
     width: 220%;
+    display: grid;
+    pointer-events: auto;
+    
 
 }
 
-.right-options h1 {
+.player {
     position: relative;
     font-family: 'Open Sans', monospace;
     font-weight: bold;
@@ -64,7 +169,21 @@
     right: 230px;
     color: #00ff88;
     width: 250%;
+    opacity: 0;
+    
+}
 
+.player.show {
+    opacity: 1;
+    pointer-events: auto;
+    
+
+}
+
+.player.hide {
+    opacity: 0;
+    pointer-events: auto;
+    
 }
 
 .board {
@@ -77,6 +196,7 @@
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(3, auto);
+
 
 }
 
@@ -175,12 +295,13 @@
     background-color: rgba(0, 0, 0, 0.8);
     flex-direction: column;
 }
+.winning-message.active {
+    display: flex;
+}
 
-.img{
-    position: relative;
-    bottom: 70px;
-    max-width:600px;
-    max-height:550px;
+img {
+    max-width: 600px;
+    max-height: 550px;
     width: auto;
     height: auto;
 }
@@ -193,12 +314,40 @@
     text-align: center;
     font-size: 65px;
     color: #00ff88;
-    
+
 }
 
-.btn{
+.tie-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+}
+
+.tie-message.active {
+    display: flex;
+}
+
+.tie-message h1 {
     position: relative;
-    bottom: 50px;
+    top: 12px;
+    font-family: 'Open Sans', monospace;
+    font-weight: bold;
+    text-align: center;
+    font-size: 65px;
+    color: #00ff88;
+
+}
+
+.btn {
+    position: relative;
+    bottom: 30px;
     font-size: 2.5rem;
     background-color: #00ff88;
     padding: 10px 15px;
@@ -206,4 +355,21 @@
     border-radius: 10px;
     border: none;
     color: white;
+}
+
+#my-canvas{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100000;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#my-canvas.active{
+    visibility: visible;
 }
