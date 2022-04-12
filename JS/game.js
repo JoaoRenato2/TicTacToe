@@ -26,21 +26,14 @@ const winnigCombination = [
     [0, 4, 8],
     [2, 4, 6],
 ];
-
+//Efeito Confete
 var confettiSettings = {
     target: 'my-canvas'
 };
 var confetti = new ConfettiGenerator(confettiSettings);
 confetti.render();
 
-const removeClass = () => {
-    if(isCircleTurn == "x"){
-        board.classList.remove("circle");
-    }else{
-        board.classList.remove("x");
-    }
 
-}
 
 window.onload = () => {
     selectBtnX.onclick = () => {
@@ -62,8 +55,6 @@ window.onload = () => {
 
 
 const startGame = () => {
-
-    
 
     for (const cell of cellElements) {
         cell.classList.remove("circle");
@@ -103,8 +94,6 @@ const endGame = (isDraw) => {
         confet.classList.add("active");
     }
 };
-
-
 
 const checkforwin = (currentPlayer) => {
     return winnigCombination.some((combination) => {

@@ -200,10 +200,10 @@
 
 }
 
-.board.x .cell:not(.x):not(.circle):hover::after,
-.board.x .cell:not(.x):not(.circle):hover::before,
-.board.circle .cell:not(.x):not(.circle):hover::after,
-.board.circle .cell:not(.x):not(.circle):hover::before {
+.board.ai .cell:not(.ai):not(.human):hover::after,
+.board.ai .cell:not(.ai):not(.human):hover::before,
+.board.human .cell:not(.ai):not(.human):hover::after,
+.board.human .cell:not(.ai):not(.human):hover::before {
     background: #3d3554 !important;
 }
 
@@ -214,8 +214,8 @@
     position: relative;
 }
 
-.cell.x,
-.cell.circle {
+.cell.ai,
+.cell.human {
     cursor: not-allowed;
 }
 
@@ -244,10 +244,10 @@
     border-right: none;
 }
 
-.cell.x::before,
-.cell.x::after,
-.board.x .cell:not(.x):not(.circle):hover::after,
-.board.x .cell:not(.x):not(.circle):hover::before {
+.cell.ai::before,
+.cell.ai::after,
+.board.ai .cell:not(.ai):not(.human):hover::after,
+.board.ai .cell:not(.ai):not(.human):hover::before {
     content: "";
     height: calc(150px * 0.15);
     width: calc(150px * 0.7);
@@ -258,20 +258,20 @@
 
 }
 
-.cell.x::before,
-.board.x .cell:not(.x):not(.circle):hover::before {
+.cell.ai::before,
+.board.ai .cell:not(.ai):not(.human):hover::before {
     transform: rotate(45deg);
 }
 
-.cell.x::after,
-.board.x .cell:not(.x):not(.circle):hover::after {
+.cell.ai::after,
+.board.ai .cell:not(.ai):not(.human):hover::after {
     transform: rotate(-45deg);
 }
 
-.cell.circle::before,
-.cell.circle::after,
-.board.circle .cell:not(.x):not(.circle):hover::after,
-.board.circle .cell:not(.x):not(.circle):hover::before {
+.cell.human::before,
+.cell.human::after,
+.board.human .cell:not(.ai):not(.human):hover::after,
+.board.human .cell:not(.ai):not(.human):hover::before {
     content: "";
     height: calc(100px * 0.9);
     width: calc(100px * 0.9);
