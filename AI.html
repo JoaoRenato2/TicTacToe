@@ -1,13 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jogo da Velha 1x1</title>
     <link rel="stylesheet" href="/css/AI.css">
 </head>
+
 <body>
+    <div class="container">
+        <div class="main-options">
+            <div class="right-options">
+                <h1 class="player">IA x Player</h1>
+                <div class="panel2">
+                    <div class="select-box">
+                        <header>Tic Tac Toe</header>
+                        <div class="content">
+                            <div class="title">Qual player você quer ser?</div>
+                            <div class="options">
+                                <button class="playerX">Player (X)</button>
+                                <button class="playerO">Player (O)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="board" data-board>
+                        <div class="cell"id="0" data-cell></div>
+                        <div class="cell"id="1" data-cell></div>
+                        <div class="cell"id="2" data-cell></div>
+                        <div class="cell"id="3" data-cell></div>
+                        <div class="cell"id="4" data-cell></div>
+                        <div class="cell"id="5" data-cell></div>
+                        <div class="cell"id="6" data-cell></div>
+                        <div class="cell"id="7" data-cell></div>
+                        <div class="cell"id="8" data-cell></div>
+                    </div>
+                    <div class="winning-message">
+                        <h1 data-winning-message-text>X VENCEU</h1>
+                        <img src="/img/Winners-bro (2).svg" alt="">
+                        <button class="btn" button>Jogar de novo</button>
+                    </div>
+                    <div class="tie-message">
+                        <h1 data-winning-message-text>DEU VELHA</h1>
+                        <img src="/img/Grandma-bro.svg" alt="">
+                        <button class="btn" button-tie>Jogar de novo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas id="my-canvas"></canvas>
+    </div>
     
+    <script src="/JS/index.min.js"></script>
+    <script src="/JS/AI.js" type="module"></script>
 </body>
 </html>
