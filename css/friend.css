@@ -240,14 +240,14 @@
 
 .cell:nth-child(3),
 .cell:nth-child(6),
-.cell:nth-child(9) {
+.cell:nth-child(9) { 
     border-right: none;
 }
 
-.cell.ai::before,
-.cell.ai::after,
-.board.ai .cell:not(.ai):not(.human):hover::after,
-.board.ai .cell:not(.ai):not(.human):hover::before {
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before {
     content: "";
     height: calc(150px * 0.15);
     width: calc(150px * 0.7);
@@ -258,20 +258,19 @@
 
 }
 
-.cell.ai::before,
-.board.ai .cell:not(.ai):not(.human):hover::before {
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
     transform: rotate(45deg);
 }
 
-.cell.ai::after,
-.board.ai .cell:not(.ai):not(.human):hover::after {
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
     transform: rotate(-45deg);
 }
 
-.cell.human::before,
-.cell.human::after,
-.board.human .cell:not(.ai):not(.human):hover::after,
-.board.human .cell:not(.ai):not(.human):hover::before {
+.cell.circle::before,
+.cell.circle::after,circlerd.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
     content: "";
     height: calc(100px * 0.9);
     width: calc(100px * 0.9);
