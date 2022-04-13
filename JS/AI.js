@@ -12,11 +12,9 @@ const selectBtnAgainTie = document.querySelector("[button-tie]");
 
 const winnermessage = document.querySelector(".winning-message");
 const timessage = document.querySelector(".tie-message");
-const message = document.querySelector("[data-winning-message-text]")
-const confet = document.querySelector("#my-canvas")
+const message = document.querySelector("[data-winning-message-text]");
 
-const f = "false";
-const v = "true";
+
 var ai;
 var human;
 var originBoard;
@@ -31,12 +29,7 @@ const winCombos = [
     [0, 4, 8],
     [2, 4, 6],
 ]
-//Efeito Confete
-var confettiSettings = {
-    target: 'my-canvas'
-};
-var confetti = new ConfettiGenerator(confettiSettings);
-confetti.render();
+
 
 
 
@@ -85,7 +78,7 @@ const startGame = () => {
     winnermessage.classList.remove("active");
     timessage.classList.remove("active");
     player.classList.remove("hide");
-    confet.classList.remove("active");
+    
 
 
 
@@ -95,8 +88,13 @@ const startGame = () => {
 function turnClick(square) {
     if (typeof originBoard[square.target.id] == 'number') {
         turn(square.target.id, human);
+        let randomDelayTime = ((Math.random() * 100)+250).toFixed();
+        /* console.log(randomDelayTime); */
         if (!checkWin(originBoard, human) && !checkTie())
-            turn(bestSpot(), ai);
+            setTimeout(()=>{
+                turn(bestSpot(), ai);
+            }, randomDelayTime);
+            
     }
 
 }
@@ -118,14 +116,14 @@ function turn(squareId, player) {
             document.getElementById(squareId).classList.add("ai");
         }
     }
-    let gameWon = checkWin(originBoard, player)
-	if (gameWon) gameOver(gameWon)
+    let gameWon = checkWin(originBoard, player);
+    if (gameWon) gameOver(gameWon);
+    checkTie();
 }
 
 
 function checkWin(board, player) {
-    let plays = board.reduce((a, e, i) =>
-        (e === player) ? a.concat(i) : a, []);
+    let plays = board.reduce((a, e, i) => (e === player) ? a.concat(i) : a, []);
     let gameWon = null;
     for (let [index, win] of winCombos.entries()) {
         if (win.every(elem => plays.indexOf(elem) > -1)) {
@@ -142,20 +140,19 @@ function checkWin(board, player) {
 function gameOver(gameWon) {
     winnermessage.classList.add("active");
     player.classList.add("hide");
-    confet.classList.add("active");
     declareWinner(gameWon.player == human ? "Você venceu!" : "Você Perdeu.")
 }
 
 function declareWinner(who) {
-	document.querySelector("[data-winning-message-text]").innerText = who;
+    document.querySelector("[data-winning-message-text]").innerText = who;
 }
 
 function emptySquares() {
-    return originBoard.filter(s => typeof s === 'number');
+    return originBoard.filter((elm, i) => i===elm);
 }
 
 function bestSpot() {
-    return emptySquares()[0];
+    return minimax(originBoard, ai).index;
 
 }
 
@@ -171,9 +168,61 @@ function checkTie() {
     return false;
 }
 
+function minimax(newBoard, player) {
+    var availSpots = emptySquares(newBoard);
 
+    if (checkWin(newBoard, human)) {
+        return {
+            score: -10
+        };
+    } else if (checkWin(newBoard, ai)) {
+        return {
+            score: 10
+        };
+    } else if (availSpots.length === 0) {
+        return {
+            score: 0
+        };
+    }
 
+    var moves = [];
+    for (let i = 0; i < availSpots.length; i++) {
+        var move = {};
+        move.index = newBoard[availSpots[i]];
+        newBoard[availSpots[i]] = player;
 
+        if (player === ai)
+            move.score = minimax(newBoard, human).score;
+        else
+            move.score = minimax(newBoard, ai).score;
+        newBoard[availSpots[i]] = move.index;
+        if ((player === ai && move.score === 10) || (player === human && move.score === -10))
+            return move;
+        else
+            moves.push(move);
+    }
+
+    let bestMove, bestScore;
+    if (player === ai) {
+        bestScore = -1000;
+        for (let i = 0; i < moves.length; i++) {
+            if (moves[i].score > bestScore) {
+                bestScore = moves[i].score;
+                bestMove = i;
+            }
+        }
+    } else {
+        bestScore = 1000;
+        for (let i = 0; i < moves.length; i++) {
+            if (moves[i].score < bestScore) {
+                bestScore = moves[i].score;
+                bestMove = i;
+            }
+        }
+    }
+
+    return moves[bestMove];
+}
 
 startGame();
 selectBtnAgain.addEventListener("click", startGame);
