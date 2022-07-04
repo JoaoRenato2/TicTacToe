@@ -1,4 +1,8 @@
-<h1 align="center"> Tic Tac Toe using Minimax</h1>
+<h1 align="ce
+
+https://user-images.githubusercontent.com/102429743/177063590-713b866e-df99-4aff-92fd-e890eff7fdcf.mp4
+
+nter"> Tic Tac Toe using Minimax</h1>
 <p align="center">
 
 </p>
